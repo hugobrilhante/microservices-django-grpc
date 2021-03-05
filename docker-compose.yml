@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  catalogs_db:
+    image: postgres
+    ports:
+      - "5431:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  catalogs_web:
+    build: catalogs
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./catalogs:/code
+    ports:
+      - "8001:8000"
+    depends_on:
+      - catalogs_db
+  orders_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  orders_web:
+    build: orders
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./orders:/code
+    ports:
+      - "8002:8000"
+    depends_on:
+      - orders_db
+  payments_db:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  payments_web:
+    build: payments
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./payments:/code
+    ports:
+      - "8003:8000"
+    depends_on:
+      - payments_db
+  users_db:
+    image: postgres
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  users_web:
+    build: users
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./users:/code
+    ports:
+      - "8004:8000"
+    depends_on:
+      - users_db
