@@ -4,4 +4,3 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
-CMD echo "This is a test." | wc -

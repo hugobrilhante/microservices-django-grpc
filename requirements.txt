@@ -1,0 +1,7 @@
+django
+djangorestframework
+djangogrpcframework
+grpcio
+grpcio-tools
+psycopg2-binary
+

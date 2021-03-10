@@ -1,16 +1,37 @@
 version: "3.9"
 
+x-environment:
+  &default-environment
+  - POSTGRES_DB=postgres
+  - POSTGRES_USER=postgres
+  - POSTGRES_PASSWORD=postgres
+
 services:
-  catalogs_db:
+  marketplace_db:
     image: postgres
     ports:
       - "5431:5432"
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    environment: *default-environment
+  marketplace_web:
+    build:
+      context: .
+      dockerfile: marketplace/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./marketplace:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - marketplace_db
+  catalogs_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment: *default-environment
   catalogs_web:
-    build: catalogs
+    build:
+      context: .
+      dockerfile: catalogs/Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./catalogs:/code
@@ -21,13 +42,12 @@ services:
   orders_db:
     image: postgres
     ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - "5433:5432"
+    environment: *default-environment
   orders_web:
-    build: orders
+    build:
+      context: .
+      dockerfile: orders/Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./orders:/code
@@ -38,13 +58,12 @@ services:
   payments_db:
     image: postgres
     ports:
-      - "5433:5432"
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - "5434:5432"
+    environment: *default-environment
   payments_web:
-    build: payments
+    build:
+      context: .
+      dockerfile: payments/Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./payments:/code
@@ -52,20 +71,3 @@ services:
       - "8003:8000"
     depends_on:
       - payments_db
-  users_db:
-    image: postgres
-    ports:
-      - "5434:5432"
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-  users_web:
-    build: users
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./users:/code
-    ports:
-      - "8004:8000"
-    depends_on:
-      - users_db
