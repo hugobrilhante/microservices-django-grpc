@@ -55,19 +55,3 @@ services:
       - "8002:8000"
     depends_on:
       - orders_db
-  payments_db:
-    image: postgres
-    ports:
-      - "5434:5432"
-    environment: *default-environment
-  payments_web:
-    build:
-      context: .
-      dockerfile: payments/Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./payments:/code
-    ports:
-      - "8003:8000"
-    depends_on:
-      - payments_db
