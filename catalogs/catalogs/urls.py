@@ -13,9 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import catalogs_pb2_grpc
 from django.contrib import admin
 from django.urls import path
+
+from app.services import ProductService
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+
+def grpc_handlers(server):
+    catalogs_pb2_grpc.add_ProductControllerServicer_to_server(ProductService.as_servicer(), server)

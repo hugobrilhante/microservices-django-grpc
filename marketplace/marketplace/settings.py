@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'users_db',
+        'HOST': 'marketplace_db',
         'PORT': 5432,
     }
 }
