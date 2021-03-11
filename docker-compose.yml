@@ -48,7 +48,7 @@ services:
     build:
       context: .
       dockerfile: orders/Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py grpcrunserver --dev
     volumes:
       - ./orders:/code
     ports:

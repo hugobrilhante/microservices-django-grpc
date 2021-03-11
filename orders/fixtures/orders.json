@@ -1,0 +1,28 @@
+[
+  {
+    "model": "app.order",
+    "pk": 1,
+    "fields": {
+      "user_id": 1,
+      "created": "2021-03-11T02:55:26.285Z"
+    }
+  },
+  {
+    "model": "app.item",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "quantity": 1,
+      "product_id": 1
+    }
+  },
+  {
+    "model": "app.item",
+    "pk": 2,
+    "fields": {
+      "order": 1,
+      "quantity": 2,
+      "product_id": 2
+    }
+  }
+]

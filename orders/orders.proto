@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package orders;
+
+import "google/protobuf/empty.proto";
+
+service OrderController {
+    rpc List(OrderListRequest) returns (stream Order) {}
+    rpc Create(Order) returns (Order) {}
+    rpc Retrieve(OrderRetrieveRequest) returns (Order) {}
+    rpc Update(Order) returns (Order) {}
+    rpc Destroy(Order) returns (google.protobuf.Empty) {}
+}
+
+message Item {
+    int32 id = 1;
+    int32 quantity = 2;
+    int32 product_id = 3;
+    int32 order = 4;
+}
+
+message Order {
+    int32 id = 1;
+    int32 user_id = 2;
+    repeated Item items = 3;
+}
+
+message OrderListRequest {
+}
+
+message OrderRetrieveRequest {
+    int32 id = 1;
+}

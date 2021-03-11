@@ -14,10 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 import catalogs_pb2_grpc
+from app.services import ProductService
 from django.contrib import admin
 from django.urls import path
-
-from app.services import ProductService
 
 urlpatterns = [
     path('admin/', admin.site.urls),

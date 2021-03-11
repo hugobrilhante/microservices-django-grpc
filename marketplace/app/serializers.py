@@ -5,3 +5,16 @@ class ProductSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     name = serializers.CharField()
     value = serializers.DecimalField(max_digits=10, decimal_places=2)
+
+
+class ItemSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    quantity = serializers.IntegerField()
+    product_id = serializers.IntegerField()
+    order = serializers.IntegerField()
+
+
+class OrderSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    user_id = serializers.IntegerField()
+    items = ItemSerializer(many=True)
