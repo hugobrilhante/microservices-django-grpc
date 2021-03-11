@@ -9,7 +9,7 @@ class ItemProtoSerializer(proto_serializers.ModelProtoSerializer):
     class Meta:
         model = Item
         proto_class = items_pb2.Item
-        fields = ['id', 'quantity', 'product_id', 'order']
+        fields = ['id', 'quantity', 'product_id', 'order', 'value']
 
 
 class OrderProtoSerializer(proto_serializers.ModelProtoSerializer):

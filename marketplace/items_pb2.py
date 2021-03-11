@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0bitems.proto\x12\x05items\x1a\x1bgoogle/protobuf/empty.proto\"G\n\x04Item\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\x12\x12\n\nproduct_id\x18\x03 \x01(\x05\x12\r\n\x05order\x18\x04 \x01(\x05\"\x11\n\x0fItemListRequest\"!\n\x13ItemRetrieveRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\xf6\x01\n\x0eItemController\x12/\n\x04List\x12\x16.items.ItemListRequest\x1a\x0b.items.Item\"\x00\x30\x01\x12$\n\x06\x43reate\x12\x0b.items.Item\x1a\x0b.items.Item\"\x00\x12\x35\n\x08Retrieve\x12\x1a.items.ItemRetrieveRequest\x1a\x0b.items.Item\"\x00\x12$\n\x06Update\x12\x0b.items.Item\x1a\x0b.items.Item\"\x00\x12\x30\n\x07\x44\x65stroy\x12\x0b.items.Item\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0bitems.proto\x12\x05items\x1a\x1bgoogle/protobuf/empty.proto\"V\n\x04Item\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\x12\x12\n\nproduct_id\x18\x03 \x01(\x05\x12\r\n\x05order\x18\x04 \x01(\x05\x12\r\n\x05value\x18\x05 \x01(\x05\"\x11\n\x0fItemListRequest\"!\n\x13ItemRetrieveRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\xf6\x01\n\x0eItemController\x12/\n\x04List\x12\x16.items.ItemListRequest\x1a\x0b.items.Item\"\x00\x30\x01\x12$\n\x06\x43reate\x12\x0b.items.Item\x1a\x0b.items.Item\"\x00\x12\x35\n\x08Retrieve\x12\x1a.items.ItemRetrieveRequest\x1a\x0b.items.Item\"\x00\x12$\n\x06Update\x12\x0b.items.Item\x1a\x0b.items.Item\"\x00\x12\x30\n\x07\x44\x65stroy\x12\x0b.items.Item\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -63,6 +63,13 @@ _ITEM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='items.Item.value', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -76,7 +83,7 @@ _ITEM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=51,
-  serialized_end=122,
+  serialized_end=137,
 )
 
 
@@ -100,8 +107,8 @@ _ITEMLISTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=141,
+  serialized_start=139,
+  serialized_end=156,
 )
 
 
@@ -132,8 +139,8 @@ _ITEMRETRIEVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=143,
-  serialized_end=176,
+  serialized_start=158,
+  serialized_end=191,
 )
 
 DESCRIPTOR.message_types_by_name['Item'] = _ITEM
@@ -171,8 +178,8 @@ _ITEMCONTROLLER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=179,
-  serialized_end=425,
+  serialized_start=194,
+  serialized_end=440,
   methods=[
   _descriptor.MethodDescriptor(
     name='List',

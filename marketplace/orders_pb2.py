@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+import items_pb2 as items__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
@@ -20,64 +21,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0corders.proto\x12\x06orders\x1a\x1bgoogle/protobuf/empty.proto\"G\n\x04Item\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\x12\x12\n\nproduct_id\x18\x03 \x01(\x05\x12\r\n\x05order\x18\x04 \x01(\x05\"A\n\x05Order\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\x12\x1b\n\x05items\x18\x03 \x03(\x0b\x32\x0c.orders.Item\"\x12\n\x10OrderListRequest\"\"\n\x14OrderRetrieveRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\x89\x02\n\x0fOrderController\x12\x33\n\x04List\x12\x18.orders.OrderListRequest\x1a\r.orders.Order\"\x00\x30\x01\x12(\n\x06\x43reate\x12\r.orders.Order\x1a\r.orders.Order\"\x00\x12\x39\n\x08Retrieve\x12\x1c.orders.OrderRetrieveRequest\x1a\r.orders.Order\"\x00\x12(\n\x06Update\x12\r.orders.Order\x1a\r.orders.Order\"\x00\x12\x32\n\x07\x44\x65stroy\x12\r.orders.Order\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0corders.proto\x12\x06orders\x1a\x0bitems.proto\x1a\x1bgoogle/protobuf/empty.proto\"@\n\x05Order\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\x12\x1a\n\x05items\x18\x03 \x03(\x0b\x32\x0b.items.Item\"\x12\n\x10OrderListRequest\"\"\n\x14OrderRetrieveRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\x89\x02\n\x0fOrderController\x12\x33\n\x04List\x12\x18.orders.OrderListRequest\x1a\r.orders.Order\"\x00\x30\x01\x12(\n\x06\x43reate\x12\r.orders.Order\x1a\r.orders.Order\"\x00\x12\x39\n\x08Retrieve\x12\x1c.orders.OrderRetrieveRequest\x1a\r.orders.Order\"\x00\x12(\n\x06Update\x12\r.orders.Order\x1a\r.orders.Order\"\x00\x12\x32\n\x07\x44\x65stroy\x12\r.orders.Order\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
+  dependencies=[items__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
-
-
-_ITEM = _descriptor.Descriptor(
-  name='Item',
-  full_name='orders.Item',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='id', full_name='orders.Item.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='quantity', full_name='orders.Item.quantity', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='product_id', full_name='orders.Item.product_id', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='order', full_name='orders.Item.order', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=53,
-  serialized_end=124,
-)
 
 
 _ORDER = _descriptor.Descriptor(
@@ -121,8 +69,8 @@ _ORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=126,
-  serialized_end=191,
+  serialized_start=66,
+  serialized_end=130,
 )
 
 
@@ -146,8 +94,8 @@ _ORDERLISTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=211,
+  serialized_start=132,
+  serialized_end=150,
 )
 
 
@@ -178,23 +126,15 @@ _ORDERRETRIEVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=213,
-  serialized_end=247,
+  serialized_start=152,
+  serialized_end=186,
 )
 
-_ORDER.fields_by_name['items'].message_type = _ITEM
-DESCRIPTOR.message_types_by_name['Item'] = _ITEM
+_ORDER.fields_by_name['items'].message_type = items__pb2._ITEM
 DESCRIPTOR.message_types_by_name['Order'] = _ORDER
 DESCRIPTOR.message_types_by_name['OrderListRequest'] = _ORDERLISTREQUEST
 DESCRIPTOR.message_types_by_name['OrderRetrieveRequest'] = _ORDERRETRIEVEREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
-Item = _reflection.GeneratedProtocolMessageType('Item', (_message.Message,), {
-  'DESCRIPTOR' : _ITEM,
-  '__module__' : 'orders_pb2'
-  # @@protoc_insertion_point(class_scope:orders.Item)
-  })
-_sym_db.RegisterMessage(Item)
 
 Order = _reflection.GeneratedProtocolMessageType('Order', (_message.Message,), {
   'DESCRIPTOR' : _ORDER,
@@ -226,8 +166,8 @@ _ORDERCONTROLLER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=250,
-  serialized_end=515,
+  serialized_start=189,
+  serialized_end=454,
   methods=[
   _descriptor.MethodDescriptor(
     name='List',

@@ -12,6 +12,7 @@ class ItemSerializer(serializers.Serializer):
     quantity = serializers.IntegerField()
     product_id = serializers.IntegerField()
     order = serializers.IntegerField()
+    value = serializers.DecimalField(max_digits=10, decimal_places=2)
 
 
 class OrderSerializer(serializers.Serializer):

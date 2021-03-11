@@ -17,6 +17,7 @@ message Item {
     int32 quantity = 2;
     int32 product_id = 3;
     int32 order = 4;
+    int32 value = 5;
 }
 
 message ItemListRequest {
