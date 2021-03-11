@@ -1,9 +1,10 @@
-from collections import namedtuple
+from decimal import Decimal
 
+import catalogs_pb2
+import catalogs_pb2_grpc
+import grpc
 from django.db import models
 from django.utils import timezone
-
-Product = namedtuple('Product', ["name", "value"])
 
 
 class Order(models.Model):
@@ -25,9 +26,10 @@ class Item(models.Model):
 
     @property
     def value(self):
-        # TODO: get product of catalog
-        product = Product('Product', 1)
-        return self.quantity * product.value
+        with grpc.insecure_channel('catalogs_web:50051') as channel:
+            stub = catalogs_pb2_grpc.ProductControllerStub(channel)
+            product = stub.Retrieve(catalogs_pb2.ProductRetrieveRequest(id=self.product_id))
+        return self.quantity * Decimal(product.value)
 
     def __str__(self):
         return f'{self.id}'
