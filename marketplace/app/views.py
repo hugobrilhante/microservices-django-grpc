@@ -27,3 +27,10 @@ class OrderAPIView(APIView):
             orders = stub.List(orders_pb2.OrderListRequest())
             serializer = OrderSerializer(orders, many=True)
             return Response(serializer.data)
+
+    def post(self, request, *args, **kwargs):
+        with grpc.insecure_channel('orders_web:50051') as channel:
+            stub = orders_pb2_grpc.OrderControllerStub(channel)
+            order = stub.Create(orders_pb2.Order(**request.data))
+            serializer = OrderSerializer(order)
+            return Response(serializer.data)

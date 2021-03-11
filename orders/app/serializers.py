@@ -13,9 +13,25 @@ class ItemProtoSerializer(proto_serializers.ModelProtoSerializer):
 
 
 class OrderProtoSerializer(proto_serializers.ModelProtoSerializer):
-    items = ItemProtoSerializer(many=True)
+    items = ItemProtoSerializer(required=False, many=True)
 
     class Meta:
         model = Order
         proto_class = orders_pb2.Order
         fields = ['id', 'user_id', 'items']
+
+    def to_internal_value(self, data):
+        items = data.pop('items')
+        ret = super().to_internal_value(data)
+        ret['items'] = items
+        return ret
+
+    def create(self, validated_data):
+        items = validated_data.pop('items')
+        order = super().create(validated_data)
+        for item in items:
+            item.update(order=order.id)
+        item_serializer = ItemProtoSerializer(data=items, many=True)
+        item_serializer.is_valid()
+        item_serializer.save()
+        return order
