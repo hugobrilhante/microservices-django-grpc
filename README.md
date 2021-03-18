@@ -4,8 +4,8 @@
 
 ## Setup
 
-    git clone https://github.com/hugobrilhante/microservices_django_grpc.git
-    cd microservices_django_grpc
+    git clone https://github.com/hugobrilhante/microservices-django-grpc.git
+    cd microservices-django-grpc
     make
 
 ## Api
